@@ -1,15 +1,17 @@
 import React from "react";
-import CicalorProgessBar from "./CicalorProgessBar";
+import CicalorProgessBar from "../CicalorProgessBar";
 
 const MovieCard = (props) => {
-  const { media } = props;
+  const { media, mediaType } = props;
   console.log("Check", media);
 
   return (
-    <div className="rounded-lg border border-slate-800 relative">
-      {media.media_type === "tv" && <p className="absolute top-0 left-0 bg-black">TV SHOWS</p>}
+    <div className="relative rounded-lg border border-slate-800">
+      {mediaType === "tv" && (
+        <p className="absolute top-0 left-0 bg-black">TV SHOWS</p>
+      )}
       <img
-        className="rounded-lg"
+        className="aspect-[2/1] rounded-lg object-cover"
         src={"https://image.tmdb.org/t/p/w500" + media.backdrop_path}
         alt=""
       />

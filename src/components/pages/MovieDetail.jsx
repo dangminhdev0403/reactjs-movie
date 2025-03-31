@@ -23,11 +23,11 @@ const MovieDetail = () => {
         },
       }).then(async (res) => {
         const data = await res.json();
-
         setMovieInfo(data);
       });
     }
   }, [id]);
+
   const certification =
     (
       (movieInfo.release_dates?.results || []).find(
@@ -39,69 +39,76 @@ const MovieDetail = () => {
     .filter((crew) => ["Director", "Screenplay", "Writer"].includes(crew.job))
     .map((crew) => ({ id: crew.id, job: crew.job, name: crew.name }));
 
-  console.log("movieInfo", movieInfo);
-
-  console.log("crews", crews);
-  console.table(crews);
-
   const groupCrews = groupBy(crews, "job");
-  console.log("groupCrews", groupCrews);
 
   return (
     <div className="relative overflow-hidden text-white">
-      <img
-        className="absolute inset-0 w-full brightness-[.2]"
-        src={"https://image.tmdb.org/t/p/original" + movieInfo.poster_path}
-        alt=""
-      />
-      <div className="relative mx-auto flex max-w-screen-xl gap-6 px-6 py-10 lg:gap-10">
+      {/* Hình nền mờ với lớp phủ tối */}
+      <div className="absolute inset-0 bg-black/50">
+        <img
+          className="h-full w-full object-cover brightness-[0.2]"
+          src={"https://image.tmdb.org/t/p/original" + movieInfo.backdrop_path}
+          alt=""
+        />
+      </div>
+
+      <div className="relative mx-auto flex max-w-screen-xl gap-10 px-6 py-10">
+        {/* Hình chính */}
         <div className="flex-1">
           <img
-            className="h-full object-cover"
-            src={
-              "https://image.tmdb.org/t/p/original" + movieInfo.backdrop_path
-            }
+          
+            src={"https://image.tmdb.org/t/p/original" + movieInfo.poster_path}
             alt=""
           />
         </div>
-        <div className="flex-[2] text-[1.2vw]">
-          <p className="mb-2 text-[2vw] font-bold">{movieInfo.title}</p>
-          <div className="flex items-center gap-4">
-            <span className="border border-gray-400 p-1 text-gray-400">
+
+        {/* Nội dung */}
+        <div className="flex-[2]">
+          {/* Tiêu đề */}
+          <h1 className="text-4xl font-bold">{movieInfo.title}</h1>
+
+          {/* Thông tin phụ */}
+          <div className="my-4 flex items-center gap-4">
+            <span className="border border-gray-400 px-2 py-1 text-sm text-gray-400">
               {certification}
             </span>
-            <p>{movieInfo.release_date}</p>
-            <p>
-              {(movieInfo.genres || []).map((genre) => genre.name).join(" p, ")}
+            <p className="text-base">{movieInfo.release_date}</p>
+            <p className="text-base">
+              {(movieInfo.genres || []).map((genre) => genre.name).join(", ")}
             </p>
           </div>
-          <div className="mt-4 flex items-center gap-4">
-            <div>
+
+          {/* Đánh giá và Trailer */}
+          <div className="my-4 flex items-center gap-6">
+            <div className="flex flex-col items-center">
               <CicalorProgessBar
                 percent={Math.round(movieInfo.vote_average * 10)}
                 size={3.5}
                 strokeWidth={0.3}
               />
-              Rateting
+              <span className="mt-1 text-sm">Rating</span>
             </div>
-            <button className="">
-              <FontAwesomeIcon icon={faPlay} className="mr-2" />
-              Trailer
+            <button className="flex items-center gap-2 text-white hover:text-gray-300">
+              <FontAwesomeIcon icon={faPlay} />
+              <span>Trailer</span>
             </button>
           </div>
 
-          <div className="mt-4">
-            <p className="mb-2 text-[1.3vw] font-bold">Overview</p>
-            <p>{movieInfo.overview}</p>
+          {/* Tổng quan */}
+          <div className="my-4">
+            <h2 className="text-xl font-bold">Tổng quan</h2>
+            <p className="mt-2 text-base">{movieInfo.overview}</p>
           </div>
 
-          <div className="mt-4 grid grid-cols-2 gap-2">
+          {/* Đội ngũ sản xuất */}
+          <div className="my-4 grid grid-cols-2 gap-4">
             {Object.entries(groupCrews).map(([job, crews]) => (
               <div key={job}>
-                <p className="font-bold">{job}</p>
-
+                <p className="text-xl font-bold">{job}</p>
                 {crews.map((crew) => (
-                  <p key={crew.id} className="pt-1">{crew.name}</p>
+                  <p key={crew.id} className="mt-1 text-base">
+                    {crew.name}
+                  </p>
                 ))}
               </div>
             ))}

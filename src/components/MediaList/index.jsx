@@ -44,7 +44,6 @@ const MediaList = (props) => {
       <div className="sm:cols-4 grid grid-cols-2 gap-4 lg:grid-cols-6 lg:gap-6">
         {mediaList.map((media) => (
           <MovieCard
-            className="min-h-[200px] min-w-[200px]"
             key={media.id}
             media={media}
             mediaType={media.media_type || activeTabId}

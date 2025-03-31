@@ -11,12 +11,12 @@ const MovieCard = (props) => {
         <p className="absolute top-0 left-0 bg-black">TV SHOWS</p>
       )}
       <img
-        className="aspect-[2/1] rounded-lg object-cover"
-        src={"https://image.tmdb.org/t/p/w500" + media.backdrop_path}
+        className="rounded-lg object-cover"
+        src={"https://image.tmdb.org/t/p/w500" + media.poster_path}
         alt=""
       />
 
-      <div className="relative -top-[2rem] px-4 py-2">
+      <div className="relative -top-[1.5vw] px-4">
         <CicalorProgessBar
           percent={Math.round(media.vote_average * 10)}
           strokeColor={media.vote_average > 5 ? "green" : "red"}

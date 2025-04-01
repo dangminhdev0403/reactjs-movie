@@ -6,6 +6,8 @@ const CicalorProgessBar = ({
   strokeWidth = 0.25,
   strokeColor = "green",
 }) => {
+  const validPercent = isNaN(Number(percent)) ? 0 : Number(percent);
+
   const radius = size / 2 - strokeWidth;
 
   return (
@@ -41,7 +43,7 @@ const CicalorProgessBar = ({
           fontSize="1.2rem"
           fill="white"
         >
-          {percent}
+          {validPercent}
         </text>
       </svg>
     </div>

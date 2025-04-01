@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 const Movie = (props) => {
   const { data } = props;
-  console.log(data);
 
   const { backdrop_path, title, releasee_date, overview } = data;
 
@@ -11,7 +10,7 @@ const Movie = (props) => {
     <>
       <img
         src={"https://image.tmdb.org/t/p/original" + backdrop_path}
-        className="aspect-video  brightness-50 w-full"
+        className="aspect-video w-full brightness-50"
         alt=""
       />
       <div className="absolute bottom-[10%] left-8 w-1/3">

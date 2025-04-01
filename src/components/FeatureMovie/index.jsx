@@ -23,7 +23,6 @@ const FeatureMovie = () => {
     });
   }, []);
 
-  console.log(movies);
 
   return (
     <div className="relative text-white">

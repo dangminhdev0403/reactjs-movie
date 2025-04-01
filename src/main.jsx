@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { default as HomePage } from "./components/pages/HomePage.jsx";
-import MovieDetail from "./components/pages/MovieDetail.jsx";
-import RootLayout from "./components/pages/RootLayout.jsx";
 import "./index.css";
+import HomePage from "./pages/HomePage";
+import MovieDetail from "./pages/MovieDetail";
+import RootLayout from "./pages/RootLayout";
 
 const router = createBrowserRouter([
   {

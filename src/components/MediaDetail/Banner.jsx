@@ -20,7 +20,7 @@ const Banner = (props) => {
 
   const groupCrews = groupBy(crews, "job");
   return (
-    <div className="relative overflow-hidden text-white">
+    <div className="relative overflow-hidden text-white shadow-md-bg-slate-800">
       {/* Hình nền mờ với lớp phủ tối */}
       <div className="absolute inset-0 bg-black/50">
         <img

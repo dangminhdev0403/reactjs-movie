@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import MovieCard from "./MovieCard";
+import { useEffect, useState } from "react";
+import MovieCard from "../MovieCard";
 
 const MediaList = (props) => {
   const { title, tabs } = props;

@@ -1,13 +1,12 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import CicalorProgessBar from "../CicalorProgessBar";
+import CicalorProgessBar from "./CicalorProgessBar";
 
 const MovieCard = (props) => {
   const { media, mediaType } = props;
 
   return (
     <Link to={`/movie/${media.id}`}>
-      <div className="relative rounded-lg border border-slate-800">
+      <div className="relative flex h-full flex-col overflow-hidden rounded-lg border border-slate-800">
         {mediaType === "tv" && (
           <p className="absolute top-0 left-0 bg-black">TV SHOWS</p>
         )}

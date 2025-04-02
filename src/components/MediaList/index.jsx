@@ -4,12 +4,21 @@ import MovieCard from "../MovieCard";
 const MediaList = (props) => {
   const { title, tabs } = props;
   const [mediaList, setMediaList] = useState([]);
-  const [activeTabId, setActiveTabId] = useState("tv");
+  const [activeTabId, setActiveTabId] = useState("all");
   useEffect(() => {
     const token =
       "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYWI5MzA1MzdkMGM1NWFlOWM3YjkyZDk4ZWEzOThhMyIsIm5iZiI6MTc0MzAxMTUxOC4xNjgsInN1YiI6IjY3ZTQzZWJlMGVlNTNkNGU3MWYwZDVkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UwUpDINQsA4l1Qh0r8-a6zln0yfINS7-9I0iH2EvAkM";
 
-    const url = tabs.find((tab) => tab.id === activeTabId).url;
+    const selectedTab =
+      tabs.find((tab) => tab.id === activeTabId) ||
+      tabs.find((tab) => tab.id === "movie") ||
+      tabs.find((tab) => tab.id === "tv");
+    // Nếu không tìm thấy tab hoặc activeTabId không phải "all", thay bằng "movie"
+
+    setActiveTabId(selectedTab?.id ?? "movie");
+
+    const url = selectedTab?.url || ""; // Đảm bảo `url` không bị undefined
+
     if (url) {
       fetch(`${url}`, {
         method: "GET",

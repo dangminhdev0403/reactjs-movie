@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CicalorProgessBar from "./CicalorProgessBar";
+import ImageComponent from "./Image";
 
 const MovieCard = (props) => {
   const { media, mediaType } = props;
@@ -10,11 +11,20 @@ const MovieCard = (props) => {
         {mediaType === "tv" && (
           <p className="absolute top-0 left-0 bg-black">TV SHOWS</p>
         )}
-        <img
-          className="rounded-lg object-cover"
+
+        <ImageComponent
+          className={"w-full rounded-lg object-cover"}
           src={"https://image.tmdb.org/t/p/w500" + media.poster_path}
+          width={210}
+          height={300}
           alt=""
         />
+        {/* <img
+          className="w-full rounded-lg object-cover"
+          src={"https://image.tmdb.org/t/p/w500" + media.poster_path}
+          alt=""
+          width={500}
+        /> */}
 
         <div className="relative -top-[1.5vw] px-4">
           <CicalorProgessBar

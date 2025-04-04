@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ActorInfo = ({ actor }) => {
   const character = actor.character
     ? actor.character
@@ -6,7 +8,10 @@ const ActorInfo = ({ actor }) => {
   const total_episode_count = actor.roles?.[0]?.episode_count; // Sử dụng ?. để tránh lỗi
 
   return (
-    <div className="rounded-lg border border-slate-300 bg-black text-white shadow-sm">
+    <Link
+      to={`/people/${actor.id}`}
+      className="rounded-lg border border-slate-300 bg-black text-white shadow-sm"
+    >
       <img
         src={
           actor.profile_path
@@ -15,7 +20,7 @@ const ActorInfo = ({ actor }) => {
         }
         width={150}
         alt=""
-        className="rounded-lg w-full"
+        className="w-full rounded-lg"
       />
 
       <div className="p-3 text-center">
@@ -28,7 +33,7 @@ const ActorInfo = ({ actor }) => {
           </p>
         )}
       </div>
-    </div>
+    </Link>
   );
 };
 

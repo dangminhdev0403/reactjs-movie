@@ -36,4 +36,4 @@ const useFetch = (
   return { isLoading, data };
 };
 
-export default useFetch;
+export { useFetch as default, defaultHeaders };

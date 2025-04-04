@@ -6,10 +6,10 @@ const MovieCard = (props) => {
   const { media, mediaType } = props;
 
   return (
-    <Link to={`/movie/${media.id}`}>
-      <div className="relative flex h-full flex-col overflow-hidden rounded-lg border border-slate-800">
+    <Link to={`/${mediaType === "movie" ? "movie" : "tv"}/${media.id}`}>
+      <div className="relative flex h-full flex-col overflow-hidden rounded-lg border border-slate-800 z-0">
         {mediaType === "tv" && (
-          <p className="absolute top-0 left-0 bg-black">TV SHOWS</p>
+          <p className="absolute top-0 right-0 z-1 bg-black">TV SHOWS</p>
         )}
 
         <ImageComponent

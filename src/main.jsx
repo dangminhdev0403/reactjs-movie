@@ -5,6 +5,8 @@ import "./index.css";
 import HomePage from "./pages/HomePage";
 import MovieDetail from "./pages/MovieDetail";
 import RootLayout from "./pages/RootLayout";
+import TVShowDetail from "./pages/TVShowDetail";
+import ModelProvider from "@context/ModelProvider";
 
 const router = createBrowserRouter([
   {
@@ -18,12 +20,18 @@ const router = createBrowserRouter([
         path: "/movie/:id",
         element: <MovieDetail />,
       },
+      {
+        path: "/tv/:id",
+        element: <TVShowDetail />,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ModelProvider>
+      <RouterProvider router={router} />
+    </ModelProvider>
   </StrictMode>,
 );

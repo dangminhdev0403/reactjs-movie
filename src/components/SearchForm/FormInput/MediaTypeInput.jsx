@@ -1,6 +1,6 @@
 const MediaTypeInput = ({ onChange, name, value }) => {
   return (
-    <div>
+    <div className="accent-black">
       <input
         type="radio"
         name={name}
@@ -8,6 +8,7 @@ const MediaTypeInput = ({ onChange, name, value }) => {
         onChange={onChange}
         id="sf-type-movie"
         checked={value === "movie"}
+        className="mr-1"
       />
       <label htmlFor="sf-type-movie">Movie</label> <br />
       <input

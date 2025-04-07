@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import CicalorProgessBar from "./CicalorProgessBar";
 import ImageComponent from "./Image";
@@ -6,8 +7,8 @@ const MovieCard = (props) => {
   const { media, mediaType } = props;
 
   return (
-    <Link to={`/${mediaType === "movie" ? "movie" : "tv"}/${media.id}`}>
-      <div className="relative flex h-full flex-col overflow-hidden rounded-lg border border-slate-800 z-0">
+    <Link to={`/${mediaType === "tv" ? "tv" : "movie"}/${media.id}`}>
+      <div className="relative z-0 flex h-full flex-col overflow-hidden rounded-lg border border-slate-800">
         {mediaType === "tv" && (
           <p className="absolute top-0 right-0 z-1 bg-black">TV SHOWS</p>
         )}
@@ -39,6 +40,11 @@ const MovieCard = (props) => {
       </div>
     </Link>
   );
+};
+
+MovieCard.propTypes = {
+  media: PropTypes.object.isRequired,
+  mediaType: PropTypes.oneOf(["movie", "tv"]).isRequired,
 };
 
 export default MovieCard;

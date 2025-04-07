@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import PropTypes from 'prop-types';
 import { ModalContext } from "./ModalContext";
 
 const ModelProvider = ({ children }) => {
@@ -25,6 +26,7 @@ const ModelProvider = ({ children }) => {
     }),
     [],
   );
+  
   return (
     <ModalContext.Provider value={value}>
       {children}
@@ -41,6 +43,10 @@ const ModelProvider = ({ children }) => {
       )}
     </ModalContext.Provider>
   );
+};
+
+ModelProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 export default ModelProvider;
